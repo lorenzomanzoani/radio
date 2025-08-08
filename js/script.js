@@ -14,16 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const audioPlayer = document.querySelector('.audio-player');
     
     menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Evita que el evento se propague
+        e.stopPropagation();
         mainNav.classList.toggle('active');
         menuToggle.innerHTML = mainNav.classList.contains('active') ? 
             '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         
-        // Mostrar u ocultar el reproductor al abrir/cerrar el menú
         if (mainNav.classList.contains('active')) {
-            audioPlayer.classList.remove('visible'); // Ocultar el reproductor
+            audioPlayer.classList.remove('visible');
         } else {
-            audioPlayer.classList.add('visible'); // Mostrar el reproductor
+            audioPlayer.classList.add('visible');
         }
     });
 
@@ -32,50 +31,49 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
             mainNav.classList.remove('active');
             menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            audioPlayer.classList.add('visible'); // Mostrar el reproductor
+            audioPlayer.classList.add('visible');
         }
     });
 
-    // Evitar que el menú se cierre al hacer clic dentro
     mainNav.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
-    // Control de visibilidad al hacer scroll
-    let lastScrollPosition = 0;
-    let ticking = false;
+    // Control de visibilidad del player al hacer scroll
+    let lastScrollPosition = window.scrollY;
+    let isScrollingDown = false;
+    let playerVisible = true;
 
     window.addEventListener('scroll', function() {
-        lastScrollPosition = window.scrollY;
-
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                handleScroll(lastScrollPosition);
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-
-    function handleScroll(scrollPos) {
+        const currentScrollPosition = window.scrollY;
+        isScrollingDown = currentScrollPosition > lastScrollPosition;
+        lastScrollPosition = currentScrollPosition;
+        
         const footer = document.querySelector('.main-footer');
         const footerRect = footer.getBoundingClientRect();
         const playerHeight = audioPlayer.offsetHeight;
 
-        // Si el footer está visible en la pantalla (cerca del borde inferior)
+        // Si estamos cerca del footer, ocultar el player
         if (footerRect.top < window.innerHeight - playerHeight) {
-            audioPlayer.classList.remove('visible'); // Ocultar el reproductor
-        } else {
-            audioPlayer.classList.add('visible'); // Mostrar el reproductor
+            audioPlayer.classList.remove('visible');
+            playerVisible = false;
+        } 
+        // Si no estamos cerca del footer
+        else {
+            // Si el scroll es hacia arriba, mostrar el player
+            if (!isScrollingDown && !playerVisible) {
+                audioPlayer.classList.add('visible');
+                playerVisible = true;
+            }
+            // Si el scroll es hacia abajo, ocultar el player
+            else if (isScrollingDown && playerVisible) {
+                audioPlayer.classList.remove('visible');
+                playerVisible = false;
+            }
         }
-    }
+    });
 
-    // Inicializar
-    handleScroll(window.scrollY);
-});
-document.addEventListener('DOMContentLoaded', function() {
     // Channels Carousel        
-    // Carousel Navigation
     const carousels = document.querySelectorAll('.channels-carousel');
     
     carousels.forEach(carousel => {
@@ -83,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const prevBtn = carousel.querySelector('.prev');
         const nextBtn = carousel.querySelector('.next');
         const channelCards = carousel.querySelectorAll('.channel-card');
-        const cardWidth = channelCards[0].offsetWidth + 30; // width + gap
+        const cardWidth = channelCards[0].offsetWidth + 30;
         
         prevBtn.addEventListener('click', () => {
             track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
@@ -95,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Audio Player
-    const audioPlayer = document.querySelector('.audio-player');
     const audioElement = document.getElementById('audioElement');
     const mainPlayBtn = document.getElementById('mainPlayBtn');
     const playButtons = document.querySelectorAll('.play-btn');
@@ -110,16 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let isPlaying = false;
     let currentTrack = null;
     
-    // Initialize player
     function initPlayer() {
         audioElement.volume = volumeSlider.value;
         updateVolumeIcon();
-        
-        // Simulate track duration
         durationDisplay.textContent = '3:45';
     }
     
-    // Play/pause function
     function togglePlay() {
         if (isPlaying) {
             audioElement.pause();
@@ -136,25 +129,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentTrack.querySelector('.play-btn i').classList.replace('fa-play', 'fa-pause');
             }
             audioPlayer.classList.add('visible');
+            playerVisible = true;
         }
         isPlaying = !isPlaying;
     }
     
-    // Update progress bar
     function updateProgress() {
-        const duration = 225; // 3:45 in seconds
+        const duration = 225;
         const currentTime = (progressFill.offsetWidth / progressBar.offsetWidth) * duration;
         currentTimeDisplay.textContent = formatTime(currentTime);
     }
     
-    // Format time (seconds to MM:SS)
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
     
-    // Update volume icon based on volume level
     function updateVolumeIcon() {
         const volume = audioElement.volume;
         if (volume === 0) {
@@ -166,18 +157,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Event listeners
     mainPlayBtn.addEventListener('click', togglePlay);
     
     playButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             
-            // If clicking on a channel card's play button
             if (this.closest('.channel-card')) {
                 const card = this.closest('.channel-card');
-                
-                // Update current track info
                 const img = card.querySelector('img').src;
                 const title = card.querySelector('h3').textContent;
                 const artist = card.querySelector('p').textContent;
@@ -189,11 +176,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentTrack = card;
             }
             
-            // If already playing this track, toggle play/pause
             if (currentTrack && this.closest('.channel-card') === currentTrack && isPlaying) {
                 togglePlay();
             } else {
-                // Otherwise, play the track
                 if (!isPlaying) togglePlay();
             }
         });
@@ -205,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
             '<i class="fas fa-heart"></i>' : '<i class="far fa-heart"></i>';
     });
     
-    // Progress bar interaction
     progressBar.addEventListener('click', (e) => {
         const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
         const progressBarWidth = progressBar.offsetWidth;
@@ -214,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProgress();
     });
     
-    // Volume controls
     volumeSlider.addEventListener('input', () => {
         audioElement.volume = volumeSlider.value;
         updateVolumeIcon();
@@ -231,10 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateVolumeIcon();
     });
     
-    // Initialize player
     initPlayer();
     
-    // Simulate progress for demo purposes
     setInterval(() => {
         if (isPlaying) {
             const currentWidth = parseFloat(progressFill.style.width) || 0;
@@ -243,69 +224,4 @@ document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
         }
     }, 1000);
-    
-    // Show player when a track is selected
-    if (currentTrack) {
-        audioPlayer.classList.add('visible');
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Obtener elementos
-    const audioPlayer = document.getElementById('audioPlayer');
-    const footer = document.querySelector('.main-footer');
-    const audioElement = document.getElementById('audioElement');
-    const mainPlayBtn = document.getElementById('mainPlayBtn');
-    
-    // Variables para control del player
-    let isPlaying = false;
-    
-    // Mostrar player después de carga
-    setTimeout(() => {
-        audioPlayer.classList.add('visible');
-    }, 2000);
-    
-    // Control de reproducción
-    mainPlayBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            audioElement.pause();
-            mainPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
-        } else {
-            audioElement.play();
-            mainPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }
-        isPlaying = !isPlaying;
-    });
-    
-    // Control de visibilidad al hacer scroll
-    let lastScrollPosition = 0;
-    let ticking = false;
-    
-    window.addEventListener('scroll', function() {
-        lastScrollPosition = window.scrollY;
-        
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                handleScroll(lastScrollPosition);
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-    
-    function handleScroll(scrollPos) {
-        const footerRect = footer.getBoundingClientRect();
-        const playerHeight = audioPlayer.offsetHeight;
-        
-        // Si el footer está visible en la pantalla (cerca del borde inferior)
-        if (footerRect.top < window.innerHeight - playerHeight) {
-            audioPlayer.classList.remove('visible');
-        } else {
-            // Solo mostrar si el scroll es hacia arriba o si estamos lejos del footer
-            audioPlayer.classList.add('visible');
-        }
-    }
-    
-    // Inicializar
-    handleScroll(window.scrollY);
 });
