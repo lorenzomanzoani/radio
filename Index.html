@@ -3,333 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiero Radio</title>
+    <title>Kiero Radio | La mejor experiencia en radio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
     <!-- Pantalla de carga -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-logo">
-            <span>Kiero Radio</span>
-        </div>
-        <div class="loading-message">
-            Sintonizando las mejores frecuencias para ti...
+        <div class="loading-animation">
+            <div class="loading-circle"></div>
+            <div class="loading-logo">
+                <img src="imagenes/LogoFinal.png" alt="Moonlight Radio">
+            </div>
         </div>
     </div>
 
-    <!-- Barra lateral -->
-    <div class="sidebar">
-        <div class="logo">
-            <img src="imagenes/logo.png" alt="logo" style="width: 200px; height: 100px;">
-        </div>
-        
-        <div class="menu-section">
-            <div class="menu-title">Menú</div>
-            <a href="#" class="menu-item active">
-                <i class="fas fa-home"></i>
-                <span>Inicio</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-search"></i>
-                <span>Explorar</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-broadcast-tower"></i>
-                <span>Radio</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-calendar-alt"></i>
-                <span>Programación</span>
-            </a>
-        </div>
-        
-        <div class="menu-section">
-            <div class="menu-title">Tu Biblioteca</div>
-            <a href="#" class="menu-item">
-                <i class="fas fa-heart"></i>
-                <span>Favoritos</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-history"></i>
-                <span>Recientes</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i class="fas fa-list"></i>
-                <span>Listas</span>
-            </a>
-        </div>       
-               
-        <div class="divider"></div>
-        
-        <div class="menu-section">
-            <div class="menu-title">Programas</div>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-headphones"></i>
-                    <span>Música Relajante</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-fire"></i>
-                    <span>Éxitos del Momento</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-guitar"></i>
-                    <span>Acústico</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-moon"></i>
-                    <span>Noche de Luna</span>
-                </a>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="imagenes/LogoFinal_negativo.png" alt="Moonlight Radio">
             </div>
-    </div>
-    
-    <!-- Barra de búsqueda fija -->
-    <div class="search-container">
-        <div class="search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar shows, canciones...">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">Canales</a></li>
+                    <li><a href="#">Programación</a></li>
+                    <li><a href="#">Eventos</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </div>
-    
-    <!-- Contenido principal -->
-<div class="main-content">
-    <!-- Sección de canales musicales -->
-    <div class="channel-section">
-        <div class="section-header">
-            <h2 class="section-title">Música</h2>
-            <div class="view-all">Ver todo</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Kiero Radio</h1>
+            <p class="tagline">La voz de nuestro pueblo, el corazón de la nación</p>
+            <p class="description">La estación de radio con programas exclusivos y contenido de calidad las 24 horas del día.</p>
         </div>
-        
-        <div class="carousel-container">
-            <div class="carousel-nav left">
-                <i class="fas fa-chevron-left"></i>
+    </section>
+
+    <!-- Featured Show -->
+    <section class="featured-show">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Programa Destacado</h2>
+                <p>Lo más escuchado esta semana</p>
             </div>
-            <div class="shows-container" id="music-carousel">
-                <!-- Canal 1 -->
-                <div class="show-card" data-channel="chill-hits" data-title="Música Relajante" data-description="Ritmos suaves para tu día">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Música Relajante" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Música Relajante</h3>
-                        <p class="show-description">Ritmos suaves para tu día</p>
-                        <div class="play-btn">
+            <div class="show-card channel-card">
+                <div class="show-image channel-image">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Noche de Luna">
+                    <div class="play-overlay">
+                        <button class="play-btn">
                             <i class="fas fa-play"></i>
-                        </div>
+                        </button>
                     </div>
                 </div>
-                
-                <!-- Canal 2 -->
-                <div class="show-card" data-channel="top-hits" data-title="Éxitos del Momento" data-description="Lo más popular ahora">
-                    <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Éxitos del Momento" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Éxitos del Momento</h3>
-                        <p class="show-description">Lo más popular ahora</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
+                <div class="show-content">
+                    <span class="show-category">Música Relajante</span>
+                    <h3>Noche de Luna</h3>
+                    <p class="show-description">Un viaje musical por las melodías más relajantes para acompañar tus noches. Disfruta de una selección cuidadosamente curada de jazz suave, piano instrumental y sonidos ambientales.</p>
+                    <div class="show-stats">
+                        <div class="stat">
+                            <i class="fas fa-headphones"></i>
+                            <span>15,842 oyentes</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Lunes a Viernes, 8 PM</span>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Canal 3 -->
-                <div class="show-card" data-channel="jazz-vibes" data-title="Vibraciones Jazz" data-description="Melodías suaves de jazz">
-                    <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vibraciones Jazz" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Vibraciones Jazz</h3>
-                        <p class="show-description">Melodías suaves de jazz</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Canal 4 -->
-                <div class="show-card" data-channel="rock-nation" data-title="Nación Rock" data-description="Lo mejor del rock">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Nación Rock" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Nación Rock</h3>
-                        <p class="show-description">Lo mejor del rock</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Canal 5 -->
-                <div class="show-card" data-channel="electronic-dreams" data-title="Sueños Electrónicos" data-description="Música electrónica para soñar">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sueños Electrónicos" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Sueños Electrónicos</h3>
-                        <p class="show-description">Música electrónica para soñar</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Canal 6 -->
-                <div class="show-card" data-channel="classic-rewind" data-title="Clásicos Inolvidables" data-description="Los grandes éxitos de siempre">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Clásicos Inolvidables" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Clásicos Inolvidables</h3>
-                        <p class="show-description">Los grandes éxitos de siempre</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-            <div class="carousel-nav right">
-                <i class="fas fa-chevron-right"></i>
+        </div>
+    </section>
+
+    <!-- Channels Section -->
+    <section class="channels-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Nuestros Canales</h2>
+                <p>Explora nuestra variedad de estilos musicales</p>
+            </div>
+            <div class="channels-carousel">
+                <button class="carousel-nav prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="channels-track">
+                    <!-- Channel 1 -->
+                    <div class="channel-card">
+                        <div class="channel-image">
+                            <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Éxitos del Momento">
+                            <div class="channel-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="channel-info">
+                            <h3>Éxitos del Momento</h3>
+                            <p>Lo más popular en la escena musical actual</p>
+                            <div class="channel-tag">
+                                <i class="fas fa-fire"></i> Trending
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Channel 2 -->
+                    <div class="channel-card">
+                        <div class="channel-image">
+                            <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vibraciones Jazz">
+                            <div class="channel-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="channel-info">
+                            <h3>Vibraciones Jazz</h3>
+                            <p>Melodías suaves de jazz para tu día</p>
+                            <div class="channel-tag">
+                                <i class="fas fa-star"></i> Premium
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Channel 3 -->
+                    <div class="channel-card">
+                        <div class="channel-image">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Nación Rock">
+                            <div class="channel-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="channel-info">
+                            <h3>Nación Rock</h3>
+                            <p>Lo mejor del rock de todos los tiempos</p>
+                            <div class="channel-tag">
+                                <i class="fas fa-bolt"></i> Energético
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Channel 4 -->
+                    <div class="channel-card">
+                        <div class="channel-image">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sueños Electrónicos">
+                            <div class="channel-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="channel-info">
+                            <h3>Sueños Electrónicos</h3>
+                            <p>Música electrónica para soñar despierto</p>
+                            <div class="channel-tag">
+                                <i class="fas fa-moon"></i> Nocturno
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Channel 5 -->
+                    <div class="channel-card">
+                        <div class="channel-image">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Clásicos Inolvidables">
+                            <div class="channel-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="channel-info">
+                            <h3>Clásicos Inolvidables</h3>
+                            <p>Los grandes éxitos que nunca pasan de moda</p>
+                            <div class="channel-tag">
+                                <i class="fas fa-history"></i> Retro
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
-    </div>
-    
-    <!-- Sección de noticias -->
-    <div class="channel-section">
-        <div class="section-header">
-            <h2 class="section-title">Noticias</h2>
-            <div class="view-all">Ver todo</div>
-        </div>
-        
-        <div class="carousel-container">
-            <div class="carousel-nav left">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="shows-container" id="news-carousel">
-                <!-- Canal 1 -->
-                <div class="show-card" data-channel="news-daily" data-title="Noticias Diarias" data-description="Lo último en actualidad">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Noticias Diarias" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Noticias Diarias</h3>
-                        <p class="show-description">Lo último en actualidad</p>
-                        <div class="play-btn">
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section">
+        <div class="section-container">
+    <div class="channels-carousel">
+        <button class="carousel-nav prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="channels-track">
+            <!-- Podcast 1 -->
+            <div class="channel-card">
+                <div class="channel-image">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ciencia Hoy">
+                    <div class="channel-overlay">
+                        <button class="play-btn">
                             <i class="fas fa-play"></i>
-                        </div>
+                        </button>
                     </div>
                 </div>
-                
-                <!-- Canal 2 -->
-                <div class="show-card" data-channel="tech-news" data-title="Noticias Tecnológicas" data-description="Avances y novedades tech">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Noticias Tecnológicas" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Noticias Tecnológicas</h3>
-                        <p class="show-description">Avances y novedades tech</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Canal 3 -->
-                <div class="show-card" data-channel="sports-update" data-title="Actualidad Deportiva" data-description="Lo último en deportes">
-                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Actualidad Deportiva" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Actualidad Deportiva</h3>
-                        <p class="show-description">Lo último en deportes</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Canal 4 -->
-                <div class="show-card" data-channel="business-today" data-title="Negocios Hoy" data-description="Mercados y finanzas">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Negocios Hoy" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Negocios Hoy</h3>
-                        <p class="show-description">Mercados y finanzas</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
+                <div class="channel-info">
+                    <h3>Ciencia Hoy</h3>
+                    <p>Los últimos descubrimientos científicos explicados</p>
+                    <div class="channel-tag">
+                        <i class="fas fa-flask"></i> Educativo
                     </div>
                 </div>
             </div>
-            <div class="carousel-nav right">
-                <i class="fas fa-chevron-right"></i>
+            
+            <!-- Podcast 2 -->
+            <div class="channel-card">
+                <div class="channel-image">
+                    <img src="https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Historias Nocturnas">
+                    <div class="channel-overlay">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="channel-info">
+                    <h3>Historias Nocturnas</h3>
+                    <p>Relatos de misterio para acompañar tus noches</p>
+                    <div class="channel-tag">
+                        <i class="fas fa-moon"></i> Terror
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podcast 3 -->
+            <div class="channel-card">
+                <div class="channel-image">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Negocios Digitales">
+                    <div class="channel-overlay">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="channel-info">
+                    <h3>Negocios Digitales</h3>
+                    <p>Consejos para emprendedores en la era digital</p>
+                    <div class="channel-tag">
+                        <i class="fas fa-chart-line"></i> Negocios
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podcast 4 -->
+            <div class="channel-card">
+                <div class="channel-image">
+                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Código Abierto">
+                    <div class="channel-overlay">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="channel-info">
+                    <h3>Código Abierto</h3>
+                    <p>Tecnología y programación para todos los niveles</p>
+                    <div class="channel-tag">
+                        <i class="fas fa-code"></i> Tecnología
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podcast 5 -->
+            <div class="channel-card">
+                <div class="channel-image">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Viajeros Sin Límites">
+                    <div class="channel-overlay">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="channel-info">
+                    <h3>Viajeros Sin Límites</h3>
+                    <p>Experiencias de viaje por los 5 continentes</p>
+                    <div class="channel-tag">
+                        <i class="fas fa-globe-americas"></i> Viajes
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Sección de entretenimiento -->
-    <div class="channel-section">
-        <div class="section-header">
-            <h2 class="section-title">Entretenimiento</h2>
-            <div class="view-all">Ver todo</div>
-        </div>
-        
-        <div class="carousel-container">
-            <div class="carousel-nav left">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="shows-container" id="entertainment-carousel">
-                <!-- Canal 1 -->
-                <div class="show-card" data-channel="daily-tech" data-title="Tecnología Diaria" data-description="Lo último en innovación tecnológica">
-                    <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tecnología Diaria" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Tecnología Diaria</h3>
-                        <p class="show-description">Lo último en innovación tecnológica</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Canal 2 -->
-                <div class="show-card" data-channel="crime-stories" data-title="Historias Criminales" data-description="Casos reales investigados">
-                    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Historias Criminales" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Historias Criminales</h3>
-                        <p class="show-description">Casos reales investigados</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Canal 3 -->
-                <div class="show-card" data-channel="health-matters" data-title="Salud y Bienestar" data-description="Consejos para una vida saludable">
-                    <img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Salud y Bienestar" class="show-image">
-                    <div class="show-content">
-                        <h3 class="show-name">Salud y Bienestar</h3>
-                        <p class="show-description">Consejos para una vida saludable</p>
-                        <div class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-        </div>
+        <button class="carousel-nav next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 </div>
-    
-    <!-- Player -->
-    <div class="player" id="player">
-        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="" class="player-image" id="player-image">
-        <div class="player-info">
-            <div class="player-title" id="player-title">Música Relajante</div>
-            <div class="player-channel" id="player-channel">Ritmos suaves para tu día</div>
+    </section>
+
+    <!-- App Section -->
+    <section class="app-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 style="color: #FAFBFD;">Programación Destacada</h2>
+                <p style="color: #FAFBFD;">No te pierdas nuestros shows especiales</p>
+            </div>
+            <div class="programs-grid">
+                <!-- Program 1 -->
+                <div class="program-card">
+                    <div class="program-time">
+                        <span>20:00</span>
+                        <span>Lun-Vie</span>
+                    </div>
+                    <div class="program-info">
+                        <h3>Noche de Luna</h3>
+                        <p>Música relajante para terminar tu día</p>
+                        <div class="program-host">
+                            <i class="fas fa-user"></i> Con DJ Luna
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="program-card">
+                    <div class="program-time">
+                        <span>12:00</span>
+                        <span>Lun-Vie</span>
+                    </div>
+                    <div class="program-info">
+                        <h3>Hora Pico</h3>
+                        <p>Los éxitos del momento en tu hora de almuerzo</p>
+                        <div class="program-host">
+                            <i class="fas fa-user"></i> Con Alex Music
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="program-card">
+                    <div class="program-time">
+                        <span>08:00</span>
+                        <span>Lun-Vie</span>
+                    </div>
+                    <div class="program-info">
+                        <h3>Despierta con Música</h3>
+                        <p>Empieza tu día con la mejor energía</p>
+                        <div class="program-host">
+                            <i class="fas fa-user"></i> Con Ana Melodía
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
-        <div class="player-controls">
-            <button class="player-btn">
-                <i class="fas fa-step-backward"></i>
-            </button>
-            <button class="player-main-btn" id="player-main-btn">
-                <i class="fas fa-pause"></i>
-            </button>
-            <button class="player-btn">
-                <i class="fas fa-step-forward"></i>
-            </button>
-            <div class="volume-controls">
-                <i class="fas fa-volume-up volume-icon" id="volume-icon"></i>
-                <input type="range" min="0" max="1" step="0.01" value="0.7" class="volume-slider" id="volume-slider">
+    </section>
+
+    <!-- Player -->
+    <div class="audio-player" id="audioPlayer">
+        <div class="player-container">
+            <div class="player-track-info">
+                <div class="track-image">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Current track">
+                </div>
+                <div class="track-details">
+                    <h4 class="track-title">Noche de Luna</h4>
+                    <p class="track-artist">Moonlight Radio</p>
+                </div>
+                <button class="like-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            
+            <div class="player-controls">
+                <button class="control-btn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="play-btn" id="mainPlayBtn">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button class="control-btn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            
+            <div class="player-extra">
+                <button class="volume-btn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.7">
+                <button class="playlist-btn">
+                    <i class="fas fa-list"></i>
+                </button>
             </div>
         </div>
     </div>
 
-    <audio id="audio-synth" loop>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+        
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+             <p>&copy; 2023 Moonlight Radio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <audio id="audioElement" loop>
         <source src="https://assets.mixkit.co/sfx/preview/mixkit-synth-pop-808-loop-192.mp3" type="audio/mpeg">
     </audio>
-    
     
     <script src="js/script.js"></script>
 </body>
